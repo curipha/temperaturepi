@@ -35,6 +35,14 @@ Topology
 
 Note: Currently, API Gateway has a functionality (AWS Service Proxy) to store the record to DynamoDB directly without Lambda.
 
+DynamoDB scheme
+--------------------
+| Device                | Timestamp                       | Air                     | Core                    |
+| --------------------- | ------------------------------- | ----------------------- | ----------------------- |
+| String                | Numeric                         | Numeric                 | Numeric                 |
+| Primary partition key | Primary sort key                |                         |                         |
+| Name of device        | Measured time in UNIX timestamp | Temperature of the room | Temperature of CPU core |
+
 Files
 --------------------
 ### `s3/index.html`
