@@ -58,3 +58,6 @@ Store the data which sent from Raspberry Pi to DynamoDB.
 This file is the one provided as "blueprint" by AWS. (It is licensed under CC0.)
 
 The API key should be required to call this Lambda function from API Gateway.
+
+### `conf/*`
+3G/LTE configuration files for Arch Linux installed on Raspberry Pi.
