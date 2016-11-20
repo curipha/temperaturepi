@@ -34,3 +34,11 @@ Topology
 
 Note: Currently, API Gateway has a functionality (AWS Service Proxy) to store the record to DynamoDB directly without Lambda.
 
+Files
+--------------------
+### `s3/index.html`
+Draw chart of logged temperature.
+It gets records to use XHR to the endpoint of API Gateway.
+
+An endpoint URI must be set on L43.
+
