@@ -46,11 +46,11 @@ An endpoint URI must be set on [L43](https://github.com/curipha/temperaturepi/bl
 
 ### `lambda/get.js`
 Retrieve the records from DynamoDB.
-To avoid change the data, some operations which cause a side-effect is removed from `lambda/post.js`.
+To avoid change the data, some operations which cause a side-effect are removed from `lambda/post.js`.
 
 It intends to allow open access to this Lambda function with API Gateway.
 
-An table name of DynamoDB must be set on L10.
+An table name of DynamoDB must be set on [L10](https://github.com/curipha/temperaturepi/blob/master/lambda/get.js#L10).
 
 ### `lambda/post.js`
 Store the data which sent from Raspberry Pi to DynamoDB.
