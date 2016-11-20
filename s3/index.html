@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<style type="text/css">
+#message {
+  color: green;
+}
+</style>
+<title>temperature</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<input type="date" id="fromdate" required />
+<button type="submit" id="load">Load chart</button>
+<div id="message">Ready</div>
+<div id="chart"></div>
+
+<script type='text/javascript'>
+Date.prototype.toDateInputValue = (function() {
+  var local = new Date(this);
+  local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+  return local.toJSON().slice(0,10);
+});
+
+google.charts.load('current', {
+  packages: ['corechart']
+});
+
+$('#fromdate').val( new Date().toDateInputValue() );
+
+$('#load').click(function() {
+  var button = $(this);
+  button.attr('disabled', true);
+
+  var from = Date.parse($('#fromdate').val()) / 1000 + ((new Date).getTimezoneOffset() * 60);
+  var to   = from + 1 * 24 * 60 * 60;
+
+  $.ajax({
+    type: 'POST',
+    url: 'https://(YOUR_API_ENDPOINT).execute-api.ap-northeast-1.amazonaws.com/(YOUR_API_STAGE)/(YOUR_API_RESOURCE)',
+    data: `{
+"operation":"query",
+"payload": {
+  "KeyConditionExpression"   :"Device = :dev and #ts between :from and :to",
+  "ExpressionAttributeNames" :{"#ts":"Timestamp"},
+  "ExpressionAttributeValues":{":dev":"alarm",":from":${from},":to":${to}}
+}}`,
+    dataType: 'json',
+    success: function(responce) {
+      $('#message').text('Records loaded @ ' + (new Date).toLocaleString()).css({
+        'color': 'blue',
+        'font-weight': 'normal'
+      });
+      drawchart(responce);
+    },
+    error: function() {
+      $('#message').text('Failed to load data from server').css({
+        'color': 'red',
+        'font-weight': 'bold'
+      });
+    },
+    complete: function() {
+      button.attr('disabled', false)
+    }
+  });
+});
+
+function drawchart(json) {
+  var record = [];
+  for (var e of json.Items) {
+    record.push([
+        new Date(e.Timestamp * 1000),
+        parseFloat(e.Air),
+        parseFloat(e.Core)
+    ]);
+  }
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('datetime', 'Timestamp');
+  data.addColumn('number', 'Air');
+  data.addColumn('number', 'Core');
+
+  data.addRows(record);
+
+  var options = {
+    hAxis: {
+      title: 'Date/Time'
+    },
+    vAxis: {
+      title: 'Degree'
+    }
+  };
+  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+  chart.draw(data, options);
+}
+</script>
+</body>
+</html>
+
