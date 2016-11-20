@@ -7,6 +7,7 @@ Saved records can be displayed graphically from your browser.
 
 TEMPer is used to record room temperature.
 This is a device that can be connected by USB.
+Please refer to `temper/README.md` for more details.
 
 Topology
 --------------------
