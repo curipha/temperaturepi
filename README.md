@@ -11,7 +11,6 @@ Please refer to `temper/README.md` for more details.
 
 Topology
 --------------------
-
 ```
                                +------------------------------------------+
                                |            Amazon Web Services           |
@@ -39,7 +38,7 @@ DynamoDB scheme
 --------------------
 | Device                | Timestamp                       | Air                     | Core                    |
 | --------------------- | ------------------------------- | ----------------------- | ----------------------- |
-| String                | Numeric                         | Numeric                 | Numeric                 |
+| String                | Number                          | Number                  | Number                  |
 | Primary partition key | Primary sort key                |                         |                         |
 | Name of device        | Measured time in UNIX timestamp | Temperature of the room | Temperature of CPU core |
 
