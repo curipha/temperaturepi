@@ -44,6 +44,16 @@ DynamoDB scheme
 
 Files
 --------------------
+### `record.rb`
+Data logger to run periodically on Raspberry Pi.
+
+You have to set up some variables to use this script:
+
+- API key for API Gateway : [L4](https://github.com/curipha/temperaturepi/blob/master/record.rb#L4)
+- API endpoint : [L5](https://github.com/curipha/temperaturepi/blob/master/record.rb#L5)
+- Table name of DynamoDB : [L18](https://github.com/curipha/temperaturepi/blob/master/record.rb#L18)
+- Device name : [L20](https://github.com/curipha/temperaturepi/blob/master/record.rb#L20)
+
 ### `debug.rb`
 Simple front-end tester for API Gateway and Lambda function.
 
