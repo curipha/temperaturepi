@@ -38,7 +38,9 @@ Files
 --------------------
 ### `s3/index.html`
 Draw chart of logged temperature.
-It gets records to use XHR to the endpoint of API Gateway.
+It gets records by XHR from the endpoint of API Gateway.
 
-An endpoint URI must be set on L43.
+You can distribute this file both directly from S3 and through CloudFront.
+
+An endpoint URI must be set on [L43](https://github.com/curipha/temperaturepi/blob/master/s3/index.html#L43).
 
