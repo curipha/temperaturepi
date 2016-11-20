@@ -44,3 +44,16 @@ You can distribute this file both directly from S3 and through CloudFront.
 
 An endpoint URI must be set on [L43](https://github.com/curipha/temperaturepi/blob/master/s3/index.html#L43).
 
+### `lambda/get.js`
+Retrieve the records from DynamoDB.
+To avoid change the data, some operations which cause a side-effect is removed from `lambda/post.js`.
+
+It intends to allow open access to this Lambda function with API Gateway.
+
+An table name of DynamoDB must be set on L10.
+
+### `lambda/post.js`
+Store the data which sent from Raspberry Pi to DynamoDB.
+This file is the one provided as "blueprint" by AWS. (It is licensed under CC0.)
+
+The API key should be required to call this Lambda function from API Gateway.
