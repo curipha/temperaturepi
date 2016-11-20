@@ -45,7 +45,8 @@ DynamoDB scheme
 Files
 --------------------
 ### `record.rb`
-Data logger to run periodically on Raspberry Pi.
+Get temperature and send them to AWS.
+This script must be run periodically on Raspberry Pi.
 
 You have to set up some variables to use this script:
 
