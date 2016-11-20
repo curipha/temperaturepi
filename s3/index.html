@@ -46,7 +46,7 @@ $('#load').click(function() {
 "payload": {
   "KeyConditionExpression"   :"Device = :dev and #ts between :from and :to",
   "ExpressionAttributeNames" :{"#ts":"Timestamp"},
-  "ExpressionAttributeValues":{":dev":"alarm",":from":${from},":to":${to}}
+  "ExpressionAttributeValues":{":dev":"(YOUR_DEVICE_NAME)",":from":${from},":to":${to}}
 }}`,
     dataType: 'json',
     success: function(responce) {
