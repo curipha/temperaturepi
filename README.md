@@ -44,6 +44,16 @@ DynamoDB scheme
 
 Files
 --------------------
+### `debug.rb`
+Simple front-end tester for API Gateway and Lambda function.
+
+You have to set up some variables to use this script:
+
+- API key for API Gateway : [L4](https://github.com/curipha/temperaturepi/blob/master/debug.rb#L4)
+- API endpoint : [L5](https://github.com/curipha/temperaturepi/blob/master/debug.rb#L5)
+- Table name of DynamoDB : [L10](https://github.com/curipha/temperaturepi/blob/master/debug.rb#L10)
+- Device name : [L17](https://github.com/curipha/temperaturepi/blob/master/debug.rb#L17)
+
 ### `s3/index.html`
 Draw chart of logged temperature.
 It gets records by XHR from the endpoint of API Gateway.
